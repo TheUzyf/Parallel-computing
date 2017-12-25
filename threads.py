@@ -3,15 +3,13 @@
 	состоящих из двух и более слов.
 """
 
-from queue import Queue, Empty
-from tkinter import *
-from bs4 import BeautifulSoup as BS
-from pymorphy2 import MorphAnalyzer as MA  
-from nltk.tokenize import WordPunctTokenizer as WPT 
-from time import time, sleep
-from requests import get
+from queue import Queue, Empty 
+from threading import Thread 
+from bs4 import BeautifulSoup as BS 
+from requests import get   
+from pymorphy2 import MorphAnalyzer as MA 
+from nltk.tokenize import WordPunctTokenizer as WPT      
 
-root = Tk()
 ma = MA()
 wt = WPT()
 
@@ -30,7 +28,7 @@ for line in file:
 	i+=1
 
 q = Queue()
-	
+
 def search():
 	Q=q.get()
 	j=0
@@ -56,24 +54,27 @@ def search():
 		if j>1:
 			Result_sub[kq]=Subjects[kq]
 		j=0
-
+		
 N = 4
 d = int(i/N)
 e = int(i%N)
 n,m = 0,d
-	
+T = [] 
+
 for f in range(N+1):
 	test=range(n,m)
 	q.put(test)
-	root.after(1,search)
+	t = Thread(target = search)
+	t.start()
 	n+=d
 	if f == N-1:
 		m+=e
 	else:
 		m+=d
-
-root.mainloop()	
+	T+=[t]	
+	
+for t in T:
+	t.join()
 	
 for key in Result_sub:
 	print(Result_sub[key])
-	
