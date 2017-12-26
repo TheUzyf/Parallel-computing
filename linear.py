@@ -3,8 +3,7 @@
 	состоящих из двух и более слов.
 """
 
-from bs4 import BeautifulSoup as BS
-from pymorphy2 import MorphAnalyzer as MA
+from pymorphy2 import MorphAnalyzer as MA 
 from nltk.tokenize import WordPunctTokenizer as WPT  
 
 ma = MA()

@@ -3,11 +3,9 @@
 	состоящих из двух и более слов.
 """
 from multiprocessing import Process, freeze_support, Queue
-from bs4 import BeautifulSoup as BS
 from requests import get
 from pymorphy2 import MorphAnalyzer as MA
 from nltk.tokenize import WordPunctTokenizer as WPT
-from time import time, sleep
 
 ma = MA()
 wt = WPT()

@@ -4,8 +4,7 @@
 """
 
 from queue import Queue, Empty 
-from threading import Thread 
-from bs4 import BeautifulSoup as BS 
+from threading import Thread  
 from requests import get   
 from pymorphy2 import MorphAnalyzer as MA 
 from nltk.tokenize import WordPunctTokenizer as WPT      

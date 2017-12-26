@@ -5,10 +5,8 @@
 
 from queue import Queue, Empty
 from tkinter import *
-from bs4 import BeautifulSoup as BS
 from pymorphy2 import MorphAnalyzer as MA  
 from nltk.tokenize import WordPunctTokenizer as WPT 
-from time import time, sleep
 from requests import get
 
 root = Tk()
